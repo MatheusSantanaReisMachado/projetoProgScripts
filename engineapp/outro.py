@@ -19,21 +19,11 @@ from __future__ import unicode_literals
 #
 import webapp2
 
-class MainHandler(webapp2.RequestHandler):
-    def get(self):
-        self.response.write('O Hello world funcionou!!')
 
-class MsgHandler(webapp2.RequestHandler):
+class OutroHandler(webapp2.RequestHandler):
     def get(self):
-        name = self.request.get('name')
-        self.response.write('%s says it works!!'%name)
-
-class RedirectHandler(webapp2.RedirectHandler):
-    def get(self):
-        self.redirect(str('/outro'))
+        self.response.write('Outro Handler!!')
 
 app = webapp2.WSGIApplication([
-    ('/', MainHandler),
-    ('/msg', MsgHandler),
-    ('/redirect', RedirectHandler)
+    ('/outro', OutroHandler),
 ], debug=True)
